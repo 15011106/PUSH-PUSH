@@ -2,7 +2,6 @@
 #include< conio.h >
 #include< windows.h >
 #include< string.h >
-
 #include "initialize.h"
 #include "gamefunction.h"
 
@@ -28,13 +27,11 @@ void MainScreen()
 
 	system("cls");
 	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
-	printf("▩                                    ▩\n");
 	printf("▩        ");
 	ColorChange("P U S H      P U S H", NULL, 15);
 	printf("        ▩\n");
 	printf("▩             By KSY CYJ             ▩\n");
 	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
-	printf("▩                                    ▩\n");
 	printf("▩                                    ▩\n");
 	printf("▩  ");
 	ColorChange("▶ [ S ] 게임 시작", NULL, 15);
@@ -48,10 +45,13 @@ void MainScreen()
 	ColorChange("▶ [ C ] 크레딧", NULL, 15);
 	printf("                   ▩\n");
 	printf("▩                                    ▩\n");
+	printf("▩  ");
+	ColorChange("▶ [ D ] 사운드", NULL, 15);
+	printf("                   ▩\n");
 	printf("▩                                    ▩\n");
 	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
 
-	while (!((m_select == 's') || (m_select == 'S') || (m_select == 'c') || (m_select == 'C') || (m_select == 'h') || (m_select == 'H') || (m_select == 27)))
+	while (!((m_select == 's') || (m_select == 'S') || (m_select == 'c') || (m_select == 'C') || (m_select == 'h') || (m_select == 'H') || (m_select == 'd') || (m_select == 'D') || (m_select == 27)))
 	{
 		m_select = _getch();
 		switch (m_select)
@@ -77,6 +77,12 @@ void MainScreen()
 			break;
 		case 'H':
 			Help();
+			break;
+		case 'd':
+			Sound();
+			break;
+		case 'D':
+			Sound();
 			break;
 		case 27:
 			break;
@@ -210,6 +216,47 @@ void Help()
 		{
 			//printf( "\a" );
 			MainScreen();
+		}
+	}
+}
+int Sound()
+{
+	char m_select = -1;
+	system("cls");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩        ");
+	ColorChange("P U S H      P U S H", NULL, 15);
+	printf("        ▩\n");
+	printf("▩             By KSY CYJ             ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩            ♧ 사운드 ♧            ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩            사운드 ON  : O          ▩\n");
+	printf("▩            사운드 OFF : F          ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩          돌아가려면 [R]키          ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	while (!(m_select == 'o' || m_select == 'f' || m_select == 'O' || m_select == 'F'))
+	{
+		m_select = _getch();
+		if (m_select == 'r' || m_select == 'R')
+		{
+			//printf( "\a" );
+			MainScreen();
+		}
+		else if (m_select == 'o' || m_select == 'O')
+		{
+			PlaySound(TEXT("C:\\test.wav"), NULL, SND_ASYNC | SND_LOOP);
+			Sound();
+		}
+		else if (m_select == 'f' || m_select == 'F')
+		{
+			sndPlaySound(NULL, SND_ASYNC);
+			Sound();
 		}
 	}
 }

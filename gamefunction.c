@@ -72,6 +72,7 @@ void Draw()
 	}
 	if (m_boxCount != 0)
 	{
+		printf("BGM ON/OFF : O/F");
 		Move(m_x, m_y);
 	}
 
@@ -128,6 +129,18 @@ void Move(int _x, int _y)
 		break;
 	case 'R':
 		LoadData(g_fileName);
+		break;
+	case 'o':
+		PlaySound(TEXT("C:\\test.wav"), NULL, SND_ASYNC | SND_LOOP);
+		break;
+	case 'O':
+		PlaySound(TEXT("C:\\test.wav"), NULL, SND_ASYNC | SND_LOOP);
+		break;
+	case 'f':
+		sndPlaySound(NULL, SND_ASYNC);
+		break;
+	case 'F':
+		sndPlaySound(NULL, SND_ASYNC);
 		break;
 	case 27:
 		g_count = 0;
