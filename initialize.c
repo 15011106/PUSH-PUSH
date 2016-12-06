@@ -2,76 +2,82 @@
 #include< conio.h >
 #include< windows.h >
 #include< string.h >
-
 #include "initialize.h"
 
 char g_fileName[] = "level";
 
 void Initialize()
 {
-	SetConsoleTitle( "::PUSH PUSH:: by KSY CYJ" );
-	system( "mode con lines=16 cols=41" );
-	system( "color 0E" );
-	system( "cls" );
+	SetConsoleTitle("::PUSH PUSH:: by KSY CYJ");
+	system("mode con lines=16 cols=41");
+	system("color 0E");
+	system("cls");
 }
 
-void ColorChange( char _string[], char _variable[], int _color )
+void ColorChange(char _string[], char _variable[], int _color)
 {
-	SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), _color );
-	printf( _string, _variable );
-	SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), 14 );
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), _color);
+	printf(_string, _variable);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
 }
 int MainScreen()
 {
 	char m_select = -1;
 
-	system( "cls" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩        ");
-	ColorChange( "P U S H      P U S H", NULL, 15 );
-	printf( "        ▩\n" );
-	printf( "▩             By KSY CYJ             ▩\n" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩  " );
-	ColorChange( "▶ [ S ] 게임 시작", NULL, 15 );
-	printf( "                ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩  " );
-	ColorChange( "▶ [ H ] 게임 설명", NULL, 15 );
-	printf( "                ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩  ");
-	ColorChange( "▶ [ C ] 크레딧", NULL, 15 );
-	printf( "                   ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
+	system("cls");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩        ");
+	ColorChange("P U S H      P U S H", NULL, 15);
+	printf("        ▩\n");
+	printf("▩             By KSY CYJ             ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩  ");
+	ColorChange("▶ [ S ] 게임 시작", NULL, 15);
+	printf("                ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩  ");
+	ColorChange("▶ [ H ] 게임 설명", NULL, 15);
+	printf("                ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩  ");
+	ColorChange("▶ [ C ] 크레딧", NULL, 15);
+	printf("                   ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩  ");
+	ColorChange("▶ [ D ] 사운드", NULL, 15);
+	printf("                   ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
 
-	while( !(( m_select=='s' )||( m_select=='c' )||( m_select=='h' )||( m_select==27 ) ) )
+	while (!((m_select == 's') || (m_select == 'c') || (m_select == 'h') || (m_select == 27) || (m_select == 'd' || (m_select == 'D'))))
 	{
 		m_select = _getch();
-		switch( m_select )
+		switch (m_select)
 		{
-			case 's':
-				//printf( "\a" );
-				SelectLevel();
-				break;
-			case 'c':
-				//printf( "\a" );
-				Credit();
-				break;
-			case 'h':
-				Help();
-				break;
-			case 27:
-				return 0;
-				break;
-			default:
-				break;
-		}	
+		case 's':
+			//printf( "\a" );
+			SelectLevel();
+			break;
+		case 'c':
+			//printf( "\a" );
+			Credit();
+			break;
+		case 'h':
+			Help();
+			break;
+		case 27:
+			return 0;
+			break;
+		case 'd':
+			Sound();
+			break;
+		case 'D':
+			Sound();
+			break;
+		default:
+			break;
+		}
 	}
 	return 0;
 };
@@ -81,113 +87,155 @@ void SelectLevel()
 	char m_select = -1;
 	char m_temp[] = "";
 
-	system( "cls" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩        ");
-	ColorChange( "P U S H      P U S H", NULL, 15 );
-	printf( "        ▩\n" );
-	printf( "▩             By KSY CYJ             ▩\n" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩           " );
-	ColorChange( "♧ 레벨선택 ♧", NULL, 15 );
-	printf( "           ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩  ");
-	ColorChange( "▶ [ 1 ] 레벨 번호로 입력", NULL, 15 );
-	printf("         ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩  ");
-	ColorChange( "▶ [ 2 ] 직접 파일 입력", NULL, 15 );
-	printf("           ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩          돌아가려면 [R]키          ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
+	system("cls");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩        ");
+	ColorChange("P U S H      P U S H", NULL, 15);
+	printf("        ▩\n");
+	printf("▩             By KSY CYJ             ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩           ");
+	ColorChange("♧ 레벨선택 ♧", NULL, 15);
+	printf("           ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩  ");
+	ColorChange("▶ [ 1 ] 레벨 번호로 입력", NULL, 15);
+	printf("         ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩  ");
+	ColorChange("▶ [ 2 ] 직접 파일 입력", NULL, 15);
+	printf("           ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩          돌아가려면 [R]키          ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
 
-	while( !(( m_select=='1' )||( m_select=='2' )||( m_select=='r' )) )
+	while (!((m_select == '1') || (m_select == '2') || (m_select == 'r')))
 	{
 		m_select = _getch();
-		MoveCursor( 6, 9 );
+		MoveCursor(6, 9);
 		printf("                        \n");
-		MoveCursor( 6, 11 );
+		MoveCursor(6, 11);
 		printf("                        \n");
-		MoveCursor( 6, 9 );
-		switch( m_select )
+		MoveCursor(6, 9);
+		switch (m_select)
 		{
-			case '1':
-				//printf( "\a" );
-				ColorChange( "레벨을 선택해 주세요.(0-9)\n", NULL, 15 );
-				MoveCursor( 6, 10 );
-				
-				scanf_s("%s", &m_temp, sizeof(m_temp) + 1);
+		case '1':
+			//printf( "\a" );
+			ColorChange("레벨을 선택해 주세요.(0-9)\n", NULL, 15);
+			MoveCursor(6, 10);
 
-				if( m_temp[0] == 'r' )
-				{
-					m_select = -1;
-					SelectLevel();
-				}
-				else
-				{
-					sprintf_s(g_fileName, 12, "level%s.dat", m_temp);
-					GameStart( g_fileName );
-				}
-				break;
-			case '2':
-				//printf( "\a" );
-				ColorChange( "파일명을 입력해 주세요.\n", NULL, 15 );
-				MoveCursor( 6, 10 );
-				scanf_s("%s", g_fileName, sizeof(g_fileName));
-				if( g_fileName[0] == 'r' )
-				{
-					m_select = -1;
-					SelectLevel();
-				}
-				else
-				{
-					printf( "%s", g_fileName );
-					GameStart( g_fileName );
-				}
-				break;
-			case 'r':
-				MainScreen();
-				break;
-			default:
-				break;
-		}	
+			scanf_s("%s", &m_temp, sizeof(m_temp) + 1);
+
+			if (m_temp[0] == 'r')
+			{
+				m_select = -1;
+				SelectLevel();
+			}
+			else
+			{
+				sprintf_s(g_fileName, 12, "level%s.dat", m_temp);
+				GameStart(g_fileName);
+			}
+			break;
+		case '2':
+			//printf( "\a" );
+			ColorChange("파일명을 입력해 주세요.\n", NULL, 15);
+			MoveCursor(6, 10);
+			scanf_s("%s", g_fileName, sizeof(g_fileName));
+			if (g_fileName[0] == 'r')
+			{
+				m_select = -1;
+				SelectLevel();
+			}
+			else
+			{
+				printf("%s", g_fileName);
+				GameStart(g_fileName);
+			}
+			break;
+		case 'r':
+			MainScreen();
+			break;
+		default:
+			break;
+		}
 	}
 };
 void Help()
 {
 	char m_select = -1;
 
-	system( "cls" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩        ");
-	ColorChange( "P U S H      P U S H", NULL, 15 );
-	printf( "        ▩\n" );
-	printf( "▩             By KSY CYJ             ▩\n" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩            ♧ 도움말 ♧            ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩     캐릭터 이동 : 방향키           ▩\n" );
-	printf( "▩            리셋 : R                ▩\n" );
-	printf( "▩       게임 중단 : ESC              ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩          돌아가려면 [R]키          ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
+	system("cls");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩        ");
+	ColorChange("P U S H      P U S H", NULL, 15);
+	printf("        ▩\n");
+	printf("▩             By KSY CYJ             ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩            ♧ 도움말 ♧            ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩     캐릭터 이동 : 방향키           ▩\n");
+	printf("▩            리셋 : R                ▩\n");
+	printf("▩       게임 중단 : ESC              ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩          돌아가려면 [R]키          ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
 
-	while( !( m_select=='r' ) )
+	while (!(m_select == 'r'))
 	{
 		m_select = _getch();
-		if( m_select == 'r' )
+		if (m_select == 'r')
 		{
 			//printf( "\a" );
 			MainScreen();
+		}
+	}
+}
+void Sound()
+{
+	char m_select = -1;
+
+	system("cls");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩        ");
+	ColorChange("P U S H      P U S H", NULL, 15);
+	printf("        ▩\n");
+	printf("▩             By KSY CYJ             ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩            ♧ 사운드 ♧            ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩            사운드 ON  : O          ▩\n");
+	printf("▩            사운드 OFF : F          ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩          돌아가려면 [R]키          ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	while (!(m_select == 'o' || m_select == 'f' || m_select == 'O' || m_select == 'F'))
+	{
+		m_select = _getch();
+		if (m_select == 'r' || m_select == 'R')
+		{
+			//printf( "\a" );
+			MainScreen();
+		}
+		else if (m_select == 'o' || m_select == 'O')
+		{
+			PlaySound(TEXT("C:\\test.wav"), NULL, SND_ASYNC | SND_LOOP);
+			Sound();
+		}
+		else if (m_select == 'f' || m_select == 'F')
+		{
+			sndPlaySound(NULL, SND_ASYNC);
+			Sound();
 		}
 	}
 }
@@ -195,29 +243,29 @@ void Credit()
 {
 	char m_select = -1;
 
-	system( "cls" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩        ");
-	ColorChange( "P U S H      P U S H", NULL, 15 );
-	printf( "        ▩\n" );
-	printf( "▩             By KSY CYJ             ▩\n" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩            ♧ 크레딧 ♧            ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩           이런거 한번쯤            ▩\n" );
-	printf( "▩         해보고 싶었습니다.         ▩\n" );
-	printf( "▩               배고파               ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩          돌아가려면 [R]키          ▩\n" );
-	printf( "▩                                    ▩\n" );
-	printf( "▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n" );
+	system("cls");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩        ");
+	ColorChange("P U S H      P U S H", NULL, 15);
+	printf("        ▩\n");
+	printf("▩             By KSY CYJ             ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩            ♧ 크레딧 ♧            ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩           이런거 한번쯤            ▩\n");
+	printf("▩         해보고 싶었습니다.         ▩\n");
+	printf("▩               배고파               ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩          돌아가려면 [R]키          ▩\n");
+	printf("▩                                    ▩\n");
+	printf("▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩▩\n");
 
-	while( !( m_select=='r' ) )
+	while (!(m_select == 'r'))
 	{
 		m_select = _getch();
-		if( m_select == 'r' )
+		if (m_select == 'r')
 		{
 			//printf( "\a" );
 			MainScreen();
